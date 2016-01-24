@@ -250,14 +250,14 @@ under the License.
 		<repositories>
     <repository>
         <id>central</id>
-        <url>http://172.31.0.42:8081/artifactory/libs-release</url>
+        <url>http://{{artifactory_host}}:8081/artifactory/libs-release</url>
         <snapshots>
             <enabled>false</enabled>
         </snapshots>
     </repository>
     <repository>
         <id>snapshots</id>
-        <url>http://172.31.0.42:8081/artifactory/libs-snapshot</url>
+        <url>http://{{artifactory_host}}:8081/artifactory/libs-snapshot</url>
         <releases>
             <enabled>false</enabled>
         </releases>
@@ -266,14 +266,14 @@ under the License.
 <pluginRepositories>
     <pluginRepository>
         <id>central</id>
-        <url>http://172.31.0.42:8081/artifactory/plugins-release</url>
+        <url>http://{{artifactory_host}}:8081/artifactory/plugins-release</url>
         <snapshots>
             <enabled>false</enabled>
         </snapshots>
     </pluginRepository>
     <pluginRepository>
         <id>snapshots</id>
-        <url>http://172.31.0.42:8081/artifactory/plugins-snapshot</url>
+        <url>http://{{artifactory_host}}:8081/artifactory/plugins-snapshot</url>
         <releases>
             <enabled>false</enabled>
         </releases>

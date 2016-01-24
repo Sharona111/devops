@@ -1,4 +1,6 @@
 - hosts: localhost
+  vars:
+    artifactory_host: 172.31.0.42
   tasks:
     - name: Install Git
       become: yes
@@ -15,10 +17,10 @@
       get_url: url=http://apache.mivzakim.net/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz dest=/home/ec2-user/apache-maven-3.3.9-bin.tar.gz mode=0777
 
     - name: UnArchive
-      unarchive: src=/home/ec2-user/apache-maven-3.3.9-bin.tar.gz dest=/home/ec2-user/maven
+      unarchive: src=/home/ec2-user/apache-maven-3.3.9-bin.tar.gz dest=/home/ec2-user
 
     - name: set M2_HOME
-      lineinfile: dest=/home/ec2-user/.bash_profile regexp="^M2_HOME.*" insertbefore="^PATH=" line="M2_HOME=/home/ec2-user/maven/apache-maven-3.3.9/"
+      lineinfile: dest=/home/ec2-user/.bash_profile regexp="^M2_HOME.*" insertbefore="^PATH=" line="M2_HOME=/home/ec2-user/apache-maven-3.3.9/"
     - name: export M2_HOME
       lineinfile: dest=/home/ec2-user/.bash_profile insertafter="^M2_HOME=" line="export M2_HOME"
     - name: set M2
@@ -34,6 +36,8 @@
       get_url: url=http://pkg.jenkins-ci.org/redhat/jenkins.repo
            dest=/etc/yum.repos.d/jenkins.repo mode=0644
 
+    - name: update settings.xml
+      template: src=/home/ec2-user/devops/settings.xml dest=/home/ec2-user/apache-maven-3.3.9/conf/settings.xml
 
     - name: Ensure Jenkins GPG key installed
       command: rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
