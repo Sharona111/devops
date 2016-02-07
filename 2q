@@ -9,12 +9,12 @@
       get_url: url=http://52.28.236.118:8081/artifactory/libs-snapshot-local/org/springframework/samples/spring-petclinic-ilandani/1.0.0-SNAPSHOT/spring-petclinic-ilandani-1.0.0-20160207.112341-1.war  dest=/home/ec2-user mode=0777
 
     - name: Build docker image
-      docker_image: path="/home/ec2-user/" name="sharona/img2" state=present
+      docker_image: path="/home/ec2-user/" name="sharona/img1" state=present
 
     - name: Run the image
       docker:
-        name: sharona2
-        image: sharona/img2
+        name: sharona
+        image: sharona/img1
         state: present
         ports: 
         - "9090:8080"

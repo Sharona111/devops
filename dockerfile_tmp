@@ -1,5 +1,5 @@
 From centos:latest
-maintainer sharona/img1
+maintainer sharona/img2
 run yum install -y java
 run yum install -y tomcat
 copy .bash_profile / 
