@@ -1,0 +1,20 @@
+- hosts: localhost
+  vars:
+    artifactory_host: 172.31.0.42
+  tasks:
+    - name: copy docker file
+      template: src=/devops-course/devops/docker_tmp dest=/
+
+    - name: Get war file from artifact
+      get_url: url= dest=/home/ec2-user mode=0777
+
+    - name: Build docker image
+      docker_image: path="/home/ec2-user/" name="sharona/img1" state=present
+
+    - name: Run the image
+      docker:
+        name: sharona/img1
+        image: sharona/img1
+        state: present
+        volumes:
+        - /data

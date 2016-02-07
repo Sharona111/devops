@@ -1,0 +1,8 @@
+From centos:latest
+maintainer sharona/img1
+run yum install -y java
+run yum install -y tomcat
+copy .bash_profile / 
+ENV NAME sharona
+run mkdir  /logs
+copy *war /usr/share/tomcat/webapps/
